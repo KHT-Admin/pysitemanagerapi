@@ -21,31 +21,7 @@ class Controller:
 
 
 @dataclass
-class ControllerRequired(Controller):
-    """
-    "controllerStatus": "READY",
-                "initialDeviceListSynced": True,
-                "installState": "installed",
-                "isConfigured": True,
-                "isInstalled": True,
-                "isRunning": True,
-                "name": "network",
-                "port": 8081,
-                "releaseChannel": "beta",
-                "required": True,
-                "state": "active",
-                "status": "ok",
-                "statusMessage": "",
-                "swaiVersion": 3,
-                "type": "controller",
-                "uiVersion": "8.5.1.0",
-                "unadoptedDevices": [],
-                "updatable": True,
-                "updateAvailable": None,
-                "version": "8.5.1",
-            },
-    """
-
+class Required(Controller):
     abridged: bool
     controllerStatus: str
     initialDeviceListSynced: bool
