@@ -54,9 +54,3 @@ def test_host_api_request():
 a = UniFiApiClient(_UNIFI_API_KEY, True)
 hosts = a.list_hosts()
 pprint.pp(hosts)
-
-# hostids = a.list_host_ids()
-# devs = a.list_devices(hostids.get("officeKHT"))
-
-# for dev in devs[0]["devices"]:
-#     print(f"{dev.get('model')}", {dev.get('name')}, {dev.get('version')}"")
