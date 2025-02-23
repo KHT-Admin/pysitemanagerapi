@@ -33,7 +33,7 @@ class Required(Controller):
 
 
 @dataclass
-class ControllerInstalled(Controller):
+class Installed(Controller):
     abridged: bool
     controllerStatus: str
     initialDeviceListSynced: bool
@@ -46,16 +46,16 @@ class ControllerInstalled(Controller):
 
 
 @dataclass
-class ControllerUninstalled(Controller):
+class Uninstalled(Controller):
     installable: bool
 
 
 def controller_factory(*args, **kwargs):
     if kwargs.get("installState") == "uninstalled":
-        return ControllerUninstalled(*args, **kwargs)
+        return Uninstalled(*args, **kwargs)
 
     if kwargs.get("required") is True and kwargs.get("installable"):
-        return ControllerRequired(*args, **kwargs)
+        return Required(*args, **kwargs)
 
 
 @dataclass
