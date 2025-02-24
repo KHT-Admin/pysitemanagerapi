@@ -25,7 +25,7 @@ class SiteManagerApiClient:
         if isinstance(hostids, str):
             hostids = list((hostids,))
 
-        if not isinstance[hostids, list]:
+        if not isinstance(hostids, list):
             raise TypeError
 
         hostids = [f"hostIds[]={r}" for r in hostids]
