@@ -32,13 +32,13 @@ class api_api_request:
 
 
 class UniFiApiRequest:
-    def __init__(self, api_key: str, early_access: bool):
+    def __init__(self, api_key: str):
         self._headers: dict = {
             "X-API-KEY": api_key,
             "Accept": "application/json",
         }
 
-        self._base_path = "/ea" if early_access else ""
+        self._base_path = "/ea"
 
         try:
             self.conn = http.client.HTTPSConnection(API_HOST)

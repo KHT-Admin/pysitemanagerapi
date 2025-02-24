@@ -11,7 +11,7 @@ class UniFiApiClient:
         api_key: str,
         early_access: bool = False,
     ):
-        self._api = UniFiApiRequest(api_key, early_access)
+        self._api = UniFiApiRequest(api_key)
 
     def list_hosts(self) -> list[UniFiApiHost]:
         return [self._host_data(i) for i in self._api.get("hosts")]
