@@ -8,7 +8,6 @@ class UniFiApiClient:
     def __init__(
         self,
         api_key: str,
-        early_access: bool = False,
     ):
         self._api = UniFiApiRequest(api_key)
 
