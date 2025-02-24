@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pyunifiapi"
 version = "0.1.0"
-description = "Python client for Offical UniFi API"
+description = "Python client for Offical UniFi Site Manager API"
 readme = "README.md"
 license = {text = "MIT License"}
 
