@@ -1,3 +1,3 @@
 # pyunifiapi
 
-Python client for the official UniFi API
+Python client for the official UniFi Site Manager API
