@@ -2,16 +2,18 @@
 
 Python client for the official UniFi Site Manager API v0.1
 
-Example usage
+The Site Manager API Client is written using Python3 core modules only and has no dependencies on third-party modules.
 
+To install from GitHub:
+```
+%pip install git+https://github.com/KHT-Admin/pysitemanagerapi
+```
+### API Key
 
-```{python}
-a = SiteManagerApiClient(_UNIFI_API_KEY)
-hosts = a.list_host_ids()
-host_devices = a.list_devices(list(hosts.values()))
+The example and test code assumes that the UniFi API key is stored in a environment variable.
 
-for host in host_devices:
-    print(f"{host['hostName']}")
-    for device in host["devices"]:
-        print(f"\t{device['model']}, {device['version']}")
+On current macOS versions the key can be added to ~/.zshrc:
+
+```
+export UNIFI_API_KEY='your_api_key_here'
 ```
