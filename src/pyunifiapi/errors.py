@@ -1,26 +1,26 @@
-class UniFiApiError(Exception):
+class SiteManagerApiError(Exception):
     """Errors raise by UniFi API Endpoint"""
 
 
-class InvalidParameter(UniFiApiError):
+class InvalidParameter(SiteManagerApiError):
     """400 Invalid Parameter"""
 
 
-class Unauthorised(UniFiApiError):
+class Unauthorised(SiteManagerApiError):
     """401 Authorisation failed"""
 
 
-class NotFound(UniFiApiError):
+class NotFound(SiteManagerApiError):
     """404 Not Found"""
 
 
-class RateLimited(UniFiApiError):
+class RateLimited(SiteManagerApiError):
     """429 Rated limiting exceeded"""
 
 
-class ServerError(UniFiApiError):
+class ServerError(SiteManagerApiError):
     """500 Failed to List Hosts"""
 
 
-class BadGateway(UniFiApiError):
+class BadGateway(SiteManagerApiError):
     """502 Bad Gateway"""

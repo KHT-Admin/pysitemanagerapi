@@ -9,7 +9,7 @@ API_VERSION = "0.1"
 
 
 @dataclass
-class UniFiApiResponse:
+class SiteManagerApiResponse:
     code: str = None
     data: dict = None
     httpStatusCode: int = None
@@ -31,7 +31,7 @@ class api_request_cm:
         self.conn.close()
 
 
-class UniFiApiRequest:
+class SiteManagerApiRequest:
     def __init__(self, api_key: str):
         self._headers: dict = {
             "X-API-KEY": api_key,
@@ -49,7 +49,7 @@ class UniFiApiRequest:
     def _api_request(self, method, url):
         with api_request_cm(self.conn, method, url, self._headers) as r:
             resp = r.getresponse()
-            response = UniFiApiResponse(**json.loads(resp.read()))
+            response = SiteManagerApiResponse(**json.loads(resp.read()))
 
         match response.httpStatusCode:
             case 200:

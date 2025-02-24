@@ -6,7 +6,7 @@ Example usage
 
 
 ```{python}
-a = UniFiApiClient(_UNIFI_API_KEY)
+a = SiteManagerApiClient(_UNIFI_API_KEY)
 hosts = a.list_host_ids()
 host_devices = a.list_devices(list(hosts.values()))
 

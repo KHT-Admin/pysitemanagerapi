@@ -1,16 +1,16 @@
 from typing import Optional
 
-from .apirequest import UniFiApiRequest
+from .apirequest import SiteManagerApiRequest
 
 
-class UniFiApiClient:
+class SiteManagerApiClient:
     def __init__(
         self,
         api_key: str,
     ):
-        self._api = UniFiApiRequest(api_key)
+        self._api = SiteManagerApiRequest(api_key)
 
-    def list_hosts(self) -> list:
+    def list_hosts(self) -> list[dict]:
         return [i for i in self._api.get("hosts")]
 
     def get_host_by_id(self, hostid: str) -> dict:
@@ -19,15 +19,17 @@ class UniFiApiClient:
     def list_sites(self) -> list[dict]:
         return self._api.get("sites")
 
-    def list_devices(self, hostids: Optional[list[str] | str] = None):
+    def list_devices(self, hostids: list[str] | str) -> list[dict]:
         url = "devices"
 
         if isinstance(hostids, str):
             hostids = list((hostids,))
 
-        if hostids is not None:
-            hostids = [f"hostIds[]={r}" for r in hostids]
-            url = f"{url}?{'&'.join(hostids)}"
+        if not isinstance[hostids, list]:
+            raise TypeError
+
+        hostids = [f"hostIds[]={r}" for r in hostids]
+        url = f"{url}?{'&'.join(hostids)}"
 
         return self._api.get(url=url)
 
