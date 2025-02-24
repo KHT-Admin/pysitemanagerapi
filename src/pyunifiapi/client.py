@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .apirequest import UniFiApiRequest
-from .datatypes.host import UniFiApiHost
 
 
 class UniFiApiClient:
@@ -13,11 +12,11 @@ class UniFiApiClient:
     ):
         self._api = UniFiApiRequest(api_key)
 
-    def list_hosts(self) -> list[UniFiApiHost]:
-        return [self._host_data(i) for i in self._api.get("hosts")]
+    def list_hosts(self) -> list:
+        return [i for i in self._api.get("hosts")]
 
     def get_host_by_id(self, hostid: str) -> dict:
-        return self._host_data(self._api.get(f"hosts/{hostid}"))
+        return self._api.get(f"hosts/{hostid}")
 
     def list_sites(self) -> list[dict]:
         return self._api.get("sites")
@@ -55,15 +54,6 @@ class UniFiApiClient:
                 raise TypeError("Invalid duration")
 
         return self._api.get(url=url)
-
-    ## Private methods
-    def _build_query(self):
-        pass
-
-    def _host_data(self, response: dict) -> dict:
-        ### Cast data to Host structure ###
-        return UniFiApiHost(**response)
-        # return response
 
     ## Utility methods
     def list_host_ids(self) -> dict:
