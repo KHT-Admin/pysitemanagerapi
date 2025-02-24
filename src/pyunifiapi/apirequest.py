@@ -17,7 +17,7 @@ class UniFiApiResponse:
     traceId: str = None
 
 
-class api_api_request:
+class api_request_cm:
     """Context manager for API requests."""
 
     def __init__(self, connection, method: str, url: str, headers: dict):
@@ -47,7 +47,7 @@ class UniFiApiRequest:
             raise e
 
     def _api_request(self, method, url):
-        with api_api_request(self.conn, method, url, self._headers) as r:
+        with api_request_cm(self.conn, method, url, self._headers) as r:
             resp = r.getresponse()
             response = UniFiApiResponse(**json.loads(resp.read()))
 

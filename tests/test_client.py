@@ -10,6 +10,7 @@ from pyunifiapi.errors import NotFound, UniFiApiError
 
 _UNIFI_API_KEY = os.environ["UNIFI_API_KEY"]
 _N_SITES = 2
+_N_HOSTS = 2
 
 
 def test_client_unifi():
@@ -22,11 +23,6 @@ def test_client_apirequest_init():
     assert isinstance(a, UniFiApiRequest)
 
 
-# def test_client_apirequest_validate_api_request():
-#     with pytest.raises(Exception) as e_info:
-#         a = UniFiApiRequest("request")
-
-
 def test_list_sites():
     a = UniFiApiClient(_UNIFI_API_KEY)
     b = a.list_sites()
@@ -36,19 +32,20 @@ def test_list_sites():
 
 def test_client_api_request():
     a = UniFiApiClient(_UNIFI_API_KEY)
-    bs = a.list_hosts()
-    assert len(bs) == _N_SITES
+    b = a.list_hosts()
+    assert len(b) == _N_SITES
 
 
 def test_bad_hostid():
     a = UniFiApiClient(_UNIFI_API_KEY)
     with pytest.raises(NotFound) as e_info:
-        bs = a.get_host_by_id("0000")
+        b = a.get_host_by_id("0000")
 
 
 def test_host_api_request():
     a = UniFiApiClient(_UNIFI_API_KEY)
-    bs = a.list_hosts()[1]
+    b = a.list_hosts()
+    assert len(b) == _N_HOSTS
 
 
 a = UniFiApiClient(_UNIFI_API_KEY)

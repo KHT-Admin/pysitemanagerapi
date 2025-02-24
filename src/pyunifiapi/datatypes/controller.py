@@ -71,8 +71,18 @@ class Network(Controller):
     updateAvailable: str
     updateProgress: int
     installable: bool
-    integrationApis: Optional[str] = None
-    abridged: Optional[bool] = None
+    integrationApis: Optional[List]
+    abridged: Optional[bool]
+
+
+@dataclass
+class InnerSpace(Controller):
+    controllerStatus: str
+    initialDeviceListSynced: bool
+    installable: bool
+    swaiVersion: int
+    uiVersion: str
+    updateAvailable: str
 
 
 @dataclass
@@ -92,3 +102,6 @@ def controller_factory(*args, **kwargs):
 
     if kwargs.get("isInstalled") and kwargs.get("name") == "network":
         return Network(*args, **kwargs)
+
+    if kwargs.get("isInstalled") and kwargs.get("name") == "innerspace":
+        return InnerSpace(*args, **kwargs)
