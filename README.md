@@ -1,8 +1,9 @@
 # pyunifiapi
 
-Python client for the official UniFi Site Manager API
+Python client for the official UniFi Site Manager API v0.1
 
 Example usage
+
 
 ```{python}
 a = UniFiApiClient(_UNIFI_API_KEY)
