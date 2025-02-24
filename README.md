@@ -1,4 +1,4 @@
-# pyunifiapi
+# pysitemanagerapi
 
 Python client for the official UniFi Site Manager API v0.1
 
