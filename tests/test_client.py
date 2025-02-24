@@ -44,8 +44,3 @@ def test_host_api_request():
     a = UniFiApiClient(_UNIFI_API_KEY)
     b = a.list_hosts()
     assert len(b) == _N_HOSTS
-
-
-a = UniFiApiClient(_UNIFI_API_KEY)
-hosts = a.list_hosts()
-pprint.pp(hosts)
