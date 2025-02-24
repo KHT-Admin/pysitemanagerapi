@@ -2,9 +2,9 @@ import dataclasses
 import os
 
 import pytest
-from pyunifiapi.apirequest import SiteManagerApiRequest
-from pyunifiapi.client import SiteManagerApiClient
-from pyunifiapi.errors import NotFound, SiteManagerApiError
+from pysitemanagerapi.apirequest import SiteManagerApiRequest
+from pysitemanagerapi.client import SiteManagerApiClient
+from pysitemanagerapi.errors import NotFound, SiteManagerApiError
 
 _UNIFI_API_KEY = os.environ["UNIFI_API_KEY"]
 _N_SITES = 2
