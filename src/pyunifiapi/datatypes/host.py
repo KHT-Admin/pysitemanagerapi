@@ -1,61 +1,7 @@
 from dataclasses import asdict, dataclass
 from typing import List, Optional, Union
 
-
-@dataclass
-class Controller:
-    installState: str
-    isConfigured: bool
-    isInstalled: bool
-    isRunning: bool
-    name: str
-    port: int
-    releaseChannel: str
-    state: str
-    status: str
-    statusMessage: str
-    type: str
-    unadoptedDevices: List
-    updatable: bool
-    version: Optional[str]
-
-
-@dataclass
-class Required(Controller):
-    abridged: bool
-    controllerStatus: str
-    initialDeviceListSynced: bool
-    restorePercentage: int
-    swaiVersion: int
-    uiVersion: str
-    updateAvailable: str
-    required: Optional[bool] = None
-
-
-@dataclass
-class Installed(Controller):
-    abridged: bool
-    controllerStatus: str
-    initialDeviceListSynced: bool
-    installable: bool
-    swaiVersion: int
-    uiVersion: str
-    updateAvailable: str
-    updateProgress: Optional[int]
-    features: Optional[dict] = None
-
-
-@dataclass
-class Uninstalled(Controller):
-    installable: bool
-
-
-def controller_factory(*args, **kwargs):
-    if kwargs.get("installState") == "uninstalled":
-        return Uninstalled(*args, **kwargs)
-
-    if kwargs.get("required") is True and kwargs.get("installable"):
-        return Required(*args, **kwargs)
+from . import controller
 
 
 @dataclass
@@ -66,7 +12,7 @@ class ReportedState:
     availableChannels: List
     consolesOnSameLocalNetwork: List
     controller_uuid: str
-    controllers: List[Controller]
+    controllers: List[controller.Controller]
     country: int
     deviceErrorCode: str
     deviceState: str
@@ -94,7 +40,9 @@ class ReportedState:
     version: str
 
     def __post_init__(self):
-        self.controllers = [controller_factory(**c) for c in self.controllers]
+        self.controllers = [
+            controller.controller_factory(**c) for c in self.controllers
+        ]
 
     def __iter__(self):
         yield from asdict(self)
