@@ -17,13 +17,8 @@ def test_client_unifi():
 
 
 def test_client_apirequest_init():
-<<<<<<< HEAD
-    a = UniFiApiRequest("abc")
-    assert isinstance(a, UniFiApiRequest)
-=======
     a = SiteManagerApiRequest("abc")
     assert isinstance(a, SiteManagerApiRequest)
->>>>>>> main
 
 
 def test_list_sites():
@@ -34,11 +29,8 @@ def test_list_sites():
 
 
 def test_client_api_request():
-<<<<<<< HEAD
-    a = UniFiApiClient(_UNIFI_API_KEY)
-=======
     a = SiteManagerApiClient(_UNIFI_API_KEY)
->>>>>>> main
+
     b = a.list_hosts()
     assert len(b) == _N_SITES
 
@@ -50,17 +42,6 @@ def test_bad_hostid():
 
 
 def test_host_api_request():
-<<<<<<< HEAD
-    a = UniFiApiClient(_UNIFI_API_KEY)
-    b = a.list_hosts()
-    assert len(b) == _N_HOSTS
-
-
-a = UniFiApiClient(_UNIFI_API_KEY)
-hosts = a.list_hosts()
-pprint.pp(hosts)
-=======
     a = SiteManagerApiClient(_UNIFI_API_KEY)
     b = a.list_hosts()
     assert len(b) == _N_HOSTS
->>>>>>> main

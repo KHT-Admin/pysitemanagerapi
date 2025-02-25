@@ -1,16 +1,16 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from .apirequest import UniFiApiRequest
+from .apirequest import SiteManagerApiRequest
 
 
-class UniFiApiClient:
+class SiteManagerApiClient:
     def __init__(
         self,
         api_key: str,
         early_access: bool = False,
     ):
-        self._api = UniFiApiRequest(api_key)
+        self._api = SiteManagerApiRequest(api_key)
 
     def list_hosts(self) -> list:
         return [i for i in self._api.get("hosts")]
